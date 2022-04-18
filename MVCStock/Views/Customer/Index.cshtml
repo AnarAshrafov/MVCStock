@@ -1,0 +1,29 @@
+﻿@using MVCStock.Models.Entity
+@model List<TBLCUSTOMER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>CUSTOMER ID</th>
+        <th>CUSTOMER FIRST NAME</th>
+        <th>CUSTOMER LAST NAME</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <tbody>
+        @foreach (var cstmr in Model)
+        {
+        <tr>
+            <th>@cstmr.CUSTOMERID</th>
+            <td>@cstmr.CUSTOMERFIRSTNAME</td>
+            <td>@cstmr.CUSTOMERLASTNAME</td>
+            <td><a href="/CUSTOMER/DeleteCustomer/@cstmr.CUSTOMERID" class="btn btn-danger">DELETE</a></td>
+            <td><a href="/CUSTOMER/GetCustomer/@cstmr.CUSTOMERID" class="btn btn-success">UPDATE</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/CUSTOMER/NewCustomer" class="btn btn-primary">ADD NEW CUSTOMER</a>

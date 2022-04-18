@@ -1,0 +1,36 @@
+﻿@using MVCStock.Models.Entity
+@model List<TBLPRODUCT>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>PRODUCT ID</th>
+        <th>PRODUCT NAME</th>
+        <th>BRAND</th>
+        <th>CATEGORY</th>
+        <th>PRICE</th>
+        <th>IN STOCK</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <tbody>
+        @foreach (var prdct in Model)
+        {
+        <tr>
+            <th>@prdct.PRODUCTID</th>
+            <td>@prdct.PRODUCTNAME</td>
+            <td>@prdct.BRAND</td>
+            <td>@prdct.TBLCATEGORy.CATEGORYNAME</td>
+            <td>@prdct.PRICE</td>
+            <td>@prdct.STOCK</td>
+            <td><a href="/PRODUCT/DELETE/@prdct.PRODUCTID" class="btn btn-danger">DELETE</a></td>
+            <td><a href="/PRODUCT/GetProduct/@prdct.PRODUCTID" class="btn btn-success">UPDATE</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/PRODUCT/NewProduct" class="btn btn-primary">ADD NEW PRODUCT</a>
+
